@@ -16,6 +16,8 @@ function Stories() {
             avatar: faker.image.avatar(),
         }))
 
+        console.log(faker)
+
         setSuggestions(suggestions)
     }, [])
 

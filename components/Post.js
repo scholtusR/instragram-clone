@@ -19,6 +19,7 @@ function Post({ id, username, userImg, img, caption }) {
     const [comments, setComments] = useState([])
     const [likes, setLikes] = useState([])
     const [hasLiked, setHasLiked] = useState(false)
+    const [counter, setCounter] = useState(1)
 
     useEffect(() => {
         return onSnapshot(query(collection(db, 'posts', id, 'comments'), orderBy('timestamp', 'desc')), snapshot => {
@@ -49,6 +50,18 @@ function Post({ id, username, userImg, img, caption }) {
         }
     }
 
+    const probando = () => {
+        setCounter(counter + 1)
+        console.log(counter)
+        if(counter === 2) {
+            likePost()
+        }
+
+        setTimeout(() => {
+            setCounter(1)
+        }, 300);
+    }
+
 
     const sendComment = async (e) => {
         e.preventDefault();
@@ -73,7 +86,7 @@ function Post({ id, username, userImg, img, caption }) {
                 <DotsHorizontalIcon className='h-5' />
             </div>
 
-            <img src={img} className="object-cover w-full" />
+            <img onClick={probando} src={img} className="object-cover w-full" />
 
             {session && (
                 <div className='flex justify-between px-4 pt-4'>
@@ -93,7 +106,7 @@ function Post({ id, username, userImg, img, caption }) {
 
             <p className='p-5 truncate'>
                 {likes.length > 0 && (
-                    <p className='font-bold mb-1'>{likes.length} likes</p>
+                    <span className='font-bold mb-1'>{likes.length} likes</span>
                 )}
                 <span className='font-bold mr-1'>{username}</span>
                 {caption}
