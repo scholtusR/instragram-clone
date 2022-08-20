@@ -18,8 +18,8 @@ function Feed() {
 
             {session && (
                 <section>
-                    <div className="hidden xl:inline-grid md:col-span-1">
-                        <MiniProfile className="fixed top-20" />
+                    <div className=" fixed hidden xl:inline-grid md:col-span-1">
+                        <MiniProfile className="top-20" />
                         <Suggestions />
                     </div>
                 </section>

@@ -53,7 +53,7 @@ function Post({ id, username, userImg, img, caption }) {
     const probando = () => {
         setCounter(counter + 1)
         console.log(counter)
-        if(counter === 2) {
+        if (counter === 2) {
             likePost()
         }
 
@@ -104,12 +104,14 @@ function Post({ id, username, userImg, img, caption }) {
                 </div>
             )}
 
-            <p className='p-5 truncate'>
+            <p className='p-5 truncate grid'>
                 {likes.length > 0 && (
                     <span className='font-bold mb-1'>{likes.length} likes</span>
                 )}
-                <span className='font-bold mr-1'>{username}</span>
-                {caption}
+                <div>
+                    <span className='font-bold mr-1'> {username}</span>
+                    {caption}
+                </div>
             </p>
 
             {comments.length > 0 && (
